@@ -1,0 +1,40 @@
+{
+  "schema": 1,
+  "description": "Summarize",
+  "execution_settings": {
+    "default": {
+      "temperature": 1,
+      "max_tokens": 1000,
+      "top_p": 1,
+      "frequency_penalty": 0,
+      "presence_penalty": 0
+    }
+  },
+  "input_variables": [
+    {
+      "name": "profession",
+      "description": "Character Profession",
+      "default": "Fighter"
+    },
+    {
+      "name": "count",
+      "description": "Number of rolls",
+      "default": "5"
+    },
+    {
+      "name": "keep",
+      "description": "Number of rolls to keep",
+      "default": "3"
+    },
+    {
+      "name": "lower",
+      "description": "Lower bound of a stat roll",
+      "default": "1"
+    },
+    {
+      "name": "upper",
+      "description": "Upper bound of a stat roll",
+      "default": "6"
+    }
+  ]
+}

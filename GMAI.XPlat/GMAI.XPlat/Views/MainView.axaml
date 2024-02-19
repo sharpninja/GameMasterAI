@@ -1,0 +1,54 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:GMAI.XPlat.ViewModels"
+             xmlns:sys="clr-namespace:System"
+             mc:Ignorable="d" 
+             x:Class="GMAI.XPlat.Views.MainView"
+             x:DataType="vm:MainViewModel">
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainViewModel />
+    </Design.DataContext>
+    <DockPanel Margin="8">
+        <Grid DockPanel.Dock="Left" MaxWidth="250">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <ListBox Grid.Row="0" 
+                      ItemsSource="{Binding Classes}" 
+                      SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <!-- <TextBox Grid.Row="0" Text="{Binding Prompt, Mode=TwoWay}" /> -->
+            <!-- <TextBlock Grid.Row="1" Text="{Binding Summary}" TextWrapping="WrapWithOverflow"/> -->
+            <StackPanel Grid.Row="2" Orientation="Horizontal" Spacing="8">
+                <Button Command="{Binding SetSummaryCommand}">Update</Button>
+                <Button Command="{Binding RollD4Command}">D4</Button>
+                <Button Command="{Binding RollStatCommand}">Stat</Button>
+            </StackPanel>
+        </Grid>
+        <ScrollViewer Margin="16,0,8,0" >
+        <ItemsRepeater ItemsSource="{Binding History}">
+            <ItemsRepeater.ItemTemplate>
+                <DataTemplate DataType="vm:HistoryItem">
+                    <Border BorderThickness="0,0,0,5" BorderBrush="Gray">
+                        <TextBlock TextWrapping="WrapWithOverflow">
+                            <Run Text="{Binding Prompt}" FontStyle="Italic"/><LineBreak/>
+                            <Run Text="{Binding Response}" FontWeight="Bold"/>
+                        </TextBlock>
+                    </Border>
+                </DataTemplate>
+            </ItemsRepeater.ItemTemplate>
+        </ItemsRepeater>
+        </ScrollViewer>
+    </DockPanel>
+</UserControl>

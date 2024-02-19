@@ -1,0 +1,66 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <LangVersion>latest</LangVersion>
+        <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <AvaloniaResource Include="Assets\**"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Avalonia" Version="11.0.9"/>
+        <PackageReference Include="Avalonia.Controls.ItemsRepeater" Version="11.0.9"/>
+        <PackageReference Include="Avalonia.Themes.Fluent" Version="11.0.9"/>
+        <PackageReference Include="Avalonia.Fonts.Inter" Version="11.0.9"/>
+        <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
+        <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.0.9"/>
+        <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2"/>
+        <PackageReference Include="Microsoft.SemanticKernel" Version="1.4.0"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Remove="plugins\DicePlugin\Summarize\config.json"/>
+        <Content Include="plugins\DicePlugin\Summarize\config.json">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <None Remove="plugins\DicePlugin\Summarize\skprompt.txt"/>
+        <Content Include="plugins\DicePlugin\Summarize\skprompt.txt">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <None Remove="plugins\DicePlugin\D4\config.json"/>
+        <Content Include="plugins\DicePlugin\D4\config.json">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <None Remove="plugins\DicePlugin\D4\skprompt.txt"/>
+        <Content Include="plugins\DicePlugin\D4\skprompt.txt">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <None Remove="plugins\DicePlugin\D6\skprompt.txt"/>
+        <Content Include="plugins\DicePlugin\D6\skprompt.txt">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <None Remove="plugins\DicePlugin\D6\config.json"/>
+        <Content Include="plugins\DicePlugin\D6\config.json">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <None Remove="plugins\DicePlugin\Stat\skprompt.txt"/>
+        <Content Include="plugins\DicePlugin\Stat\skprompt.txt">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <None Remove="plugins\DicePlugin\Stat\config.json"/>
+        <Content Include="plugins\DicePlugin\Stat\config.json">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <None Remove="plugins\DicePlugin\CharacterStats\skprompt.txt"/>
+        <Content Include="plugins\DicePlugin\CharacterStats\skprompt.txt">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <None Remove="plugins\DicePlugin\CharacterStats\config.json"/>
+        <Content Include="plugins\DicePlugin\CharacterStats\config.json">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+    </ItemGroup>
+</Project>
